@@ -1,7 +1,7 @@
 function HeroSection({ content }: { content: any }) {
   return (
     <section>
-      <div dir="rtl">
+      <div>
         <h1>{content.header}</h1>
         <p>{content.description}</p>
       </div>

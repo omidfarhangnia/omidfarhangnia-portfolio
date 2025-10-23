@@ -2,13 +2,10 @@ import Link from "next/link";
 import HeroSection from "../components/heroSection";
 import MainLayout from "../components/mainLayout";
 import { getDictionary } from "./dictionaries";
+import { Lang } from "@/types/lang";
 
-export default async function Home({
-  params,
-}: {
-  params: Promise<{ lang: "en" | "fa" }>;
-}) {
-  const { lang } = await params;
+export default async function Home({ params }: { params: { lang: Lang } }) {
+  const { lang } = params;
   const dict = await getDictionary(lang);
 
   return (
@@ -17,7 +14,7 @@ export default async function Home({
         <Link href={"/en"}>english</Link>
         <Link href={"/fa"}>persian</Link>
       </div>
-      <MainLayout>
+      <MainLayout lang={lang}>
         <HeroSection content={dict.homePage.heroSection} />
       </MainLayout>
     </>
